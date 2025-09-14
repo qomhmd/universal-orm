@@ -362,19 +362,8 @@ class OrientDBAdapter extends BaseAdapter {
      */
     async query(query, params = {}) {
         try {
-            this.db.query(query, { params })
-                .on("data", data => {
-                    console.log(data);
-                    return data;
-                })
-                .on('error', (err) => {
-                    console.log('orientdb stream error');
-                    return err;
-                })
-                .on("end", () => {
-                    console.log('orientdb stream end');
-                    return "End of the stream";
-                });
+            const results = await this.db.query(query, { params }).all();
+            return results;
         } catch (error) {
             throw new DatabaseError(`Query failed: ${error.message}`);
         }
