@@ -7,7 +7,7 @@ const InfluxDBAdapter = require('../adapters/InfluxDBAdapter');
 const MongoAdapter = require('../adapters/MongoAdapter');
 const Neo4jAdapter = require('../adapters/Neo4JAdapter');
 const OrientDBAdapter = require('../adapters/OrientDBAdapter');
-const PostgresAdapter = require('../adapters/PostgressAdapter');
+const PostgresAdapter = require('../adapters/PostgresAdapter');
 const RedisAdapter = require('../adapters/RedisAdapter');
 const TimescaleAdapter = require('../adapters/TimescaleAdapter');
 

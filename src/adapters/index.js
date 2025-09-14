@@ -1,5 +1,5 @@
 module.exports = {
-    PostgressAdapter: require('./PostgressAdapter'),
+    PostgresAdapter: require('./PostgresAdapter'),
     MongoAdapter: require('./MongoAdapter'),
     RedisAdapter: require('./RedisAdapter'),
     CassandraAdapter: require('./CassandraAdapter'),
