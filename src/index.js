@@ -1,6 +1,7 @@
 const DatabaseFactory = require('./factory/DatabaseFactory');
 const { ConfigValidator } = require('./utils/validators');
 const { DatabaseError } = require('./utils/errors');
+const BaseAdapter = require('./adapters/BaseAdapter');
 
 class UniversalORM {
     constructor() {
