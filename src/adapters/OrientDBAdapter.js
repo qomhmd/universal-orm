@@ -231,7 +231,8 @@ class OrientDBAdapter extends BaseAdapter {
 
             this.db.query(queryStr, { params })
                 .on("data", data => {
-                    return data.map(record => this._processRecord(record));
+                    // return data.map(record => this._processRecord(record));
+                    return data;
                 })
                 .on('error',(err)=> {
                     console.log(err);
