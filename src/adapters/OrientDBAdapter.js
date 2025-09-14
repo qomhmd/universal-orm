@@ -208,7 +208,7 @@ class OrientDBAdapter extends BaseAdapter {
                 skip
             } = options;
 
-            let queryStr = `SELECT ${select} FROM ${className}`;
+            let queryStr = `SELECT ${select || ''} FROM ${className}`;
             const params = {};
 
             if (Object.keys(query).length > 0) {
