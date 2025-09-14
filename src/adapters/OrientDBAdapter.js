@@ -229,8 +229,16 @@ class OrientDBAdapter extends BaseAdapter {
                 queryStr += ` SKIP ${skip}`;
             }
 
-            const results = await this.db.query(queryStr, { params });
-            return results.map(record => this._processRecord(record));
+            this.db.query(queryStr, { params })
+                .on("data", data => {
+                    return data.map(record => this._processRecord(record));
+                })
+                .on('error',(err)=> {
+                    console.log(err);
+                })
+                .on("end", () => {
+                    console.log("End of the stream");
+                });
         } catch (error) {
             throw new DatabaseError(`Find vertices failed: ${error.message}`);
         }
