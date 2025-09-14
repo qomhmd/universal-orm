@@ -229,17 +229,9 @@ class OrientDBAdapter extends BaseAdapter {
                 queryStr += ` SKIP ${skip}`;
             }
 
-            this.db.query(queryStr, { params })
-                .on("data", data => {
-                    // return data.map(record => this._processRecord(record));
-                    return data;
-                })
-                .on('error',(err)=> {
-                    console.log(err);
-                })
-                .on("end", () => {
-                    console.log("End of the stream");
-                });
+            console.log('Executing query:', queryStr, params);
+            
+            return await this.query(queryStr, { params });
         } catch (error) {
             throw new DatabaseError(`Find vertices failed: ${error.message}`);
         }
@@ -304,7 +296,7 @@ class OrientDBAdapter extends BaseAdapter {
             } = options;
 
             let queryStr = `TRAVERSE ${direction}('${edgeClass || ''}') FROM ${startVertex}`;
-            
+
             if (vertexClass) {
                 queryStr += ` WHILE @class = '${vertexClass}'`;
             }
@@ -333,7 +325,7 @@ class OrientDBAdapter extends BaseAdapter {
             } = options;
 
             let queryStr = `SELECT shortestPath(${fromVertex}, ${toVertex}, '${direction}'`;
-            
+
             if (edgeClass) {
                 queryStr += `, '${edgeClass}'`;
             }
@@ -370,8 +362,16 @@ class OrientDBAdapter extends BaseAdapter {
      */
     async query(query, params = {}) {
         try {
-            const results = await this.db.query(query, { params });
-            return results.map(record => this._processRecord(record));
+            this.db.query(query, { params })
+                .on("data", data => {
+                    return data;
+                })
+                .on('error', (err) => {
+                    return err;
+                })
+                .on("end", () => {
+                    return "End of the stream";
+                });
         } catch (error) {
             throw new DatabaseError(`Query failed: ${error.message}`);
         }
@@ -587,7 +587,7 @@ class OrientDBAdapter extends BaseAdapter {
      */
     _buildOperatorCondition(field, operator, value, counter) {
         const paramName = `p${counter}`;
-        
+
         switch (operator) {
             case '$eq':
                 return {
