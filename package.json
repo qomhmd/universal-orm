@@ -44,12 +44,12 @@
     "aws-sdk": "^2.1692.0",
     "cassandra-driver": "^4.7.2",
     "ioredis": "^5.3.2",
-    "mongodb": "^6.3.0",
     "mongoose": "^8.18.1",
     "neo4j-driver": "^5.15.0",
     "orientjs": "^3.0.11",
     "pg": "^8.11.3",
-    "redis": "^4.6.11"
+    "redis": "^4.6.11",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
