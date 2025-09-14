@@ -1,5 +1,5 @@
 // src/adapters/OrientDBAdapter.js
-const OrientDB = require('orientjs');
+const OrientDBClient = require('orientjs').OrientDBClient;
 const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
@@ -17,17 +17,16 @@ class OrientDBAdapter extends BaseAdapter {
      */
     async initialize() {
         try {
-            this.server = OrientDB({
+            this.server = await OrientDBClient.connect({
                 host: this.config.host,
                 port: this.config.port,
-                username: this.config.username,
-                password: this.config.password,
-                pool: {
-                    max: this.config.poolSize || 10
-                }
+                // servers?: OServerConfig[] | undefined;
+                // pool?: { max?: number | undefined; min?: number | undefined } | undefined;
+                // subscribePool?: { max?: number | undefined } | undefined;
+                // logger?: any;
             });
 
-            this.db = await this.server.use({
+            this.db = await this.server.session({
                 name: this.config.database,
                 username: this.config.dbUsername,
                 password: this.config.dbPassword
