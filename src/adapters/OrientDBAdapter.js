@@ -208,7 +208,7 @@ class OrientDBAdapter extends BaseAdapter {
                 skip
             } = options;
 
-            let queryStr = `SELECT ${select || '*'} FROM ${className}`;
+            let queryStr = `SELECT ${select} FROM ${className}`;
             const params = {};
 
             if (Object.keys(query).length > 0) {
@@ -230,7 +230,7 @@ class OrientDBAdapter extends BaseAdapter {
             }
 
             console.log('Executing query:', queryStr, params);
-            
+
             return await this.query(queryStr, { params });
         } catch (error) {
             throw new DatabaseError(`Find vertices failed: ${error.message}`);
