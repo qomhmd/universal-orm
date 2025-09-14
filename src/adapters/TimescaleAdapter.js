@@ -1,6 +1,6 @@
 
 const { Pool } = require('pg');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 const PostgresAdapter = require('./PostgresAdapter');
 

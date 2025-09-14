@@ -1,6 +1,6 @@
 
 const cassandra = require('cassandra-driver');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class CassandraAdapter extends BaseAdapter {

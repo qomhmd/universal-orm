@@ -1,6 +1,6 @@
 // src/adapters/OrientDBAdapter.js
 const OrientDB = require('orientjs');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class OrientDBAdapter extends BaseAdapter {

@@ -1,6 +1,6 @@
 // src/adapters/DynamoDBAdapter.js
 const AWS = require('aws-sdk');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class DynamoDBAdapter extends BaseAdapter {

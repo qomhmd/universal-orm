@@ -1,6 +1,6 @@
 // src/adapters/InfluxDBAdapter.js
 const { InfluxDB, Point, HttpError } = require('@influxdata/influxdb-client');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class InfluxDBAdapter extends BaseAdapter {

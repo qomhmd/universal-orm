@@ -1,6 +1,6 @@
 
 const { Sequelize, Model, DataTypes } = require('sequelize');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class PostgresAdapter extends BaseAdapter {

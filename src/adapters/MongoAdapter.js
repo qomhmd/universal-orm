@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class MongoAdapter extends BaseAdapter {

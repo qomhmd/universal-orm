@@ -1,6 +1,6 @@
 
 const Redis = require('ioredis')
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class RedisAdapter extends BaseAdapter {

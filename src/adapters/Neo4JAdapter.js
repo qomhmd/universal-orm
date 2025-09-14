@@ -1,6 +1,6 @@
 
 const neo4j = require('neo4j-driver');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class Neo4jAdapter extends BaseAdapter {

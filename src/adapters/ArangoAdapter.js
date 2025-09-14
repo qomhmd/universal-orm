@@ -1,5 +1,5 @@
 const { Database, aql } = require('arangojs');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class ArangoAdapter extends BaseAdapter {

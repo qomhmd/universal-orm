@@ -1,6 +1,6 @@
 
 const { Client } = require('@elastic/elasticsearch');
-const { BaseAdapter } = require('./BaseAdapter');
+const BaseAdapter = require('./BaseAdapter');
 const { DatabaseError } = require('../utils/errors');
 
 class ElasticsearchAdapter extends BaseAdapter {
