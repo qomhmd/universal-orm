@@ -364,12 +364,15 @@ class OrientDBAdapter extends BaseAdapter {
         try {
             this.db.query(query, { params })
                 .on("data", data => {
+                    console.log('orientdb stream data');
                     return data;
                 })
                 .on('error', (err) => {
+                    console.log('orientdb stream error');
                     return err;
                 })
                 .on("end", () => {
+                    console.log('orientdb stream end');
                     return "End of the stream";
                 });
         } catch (error) {
