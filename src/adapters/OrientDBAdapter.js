@@ -558,7 +558,7 @@ class OrientDBAdapter extends BaseAdapter {
                     );
                     conditions.push(condition);
                     if (parameter !== undefined) {
-                        params[`p${paramCounter}`] = parameter;
+                        params[`p${paramCounter - 1}`] = parameter;
                     }
                 }
             } else {
