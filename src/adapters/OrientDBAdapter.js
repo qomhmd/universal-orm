@@ -229,9 +229,7 @@ class OrientDBAdapter extends BaseAdapter {
                 queryStr += ` SKIP ${skip}`;
             }
 
-            console.log('Executing query:', queryStr, 'Params:', params);
-
-            return await this.query(queryStr, { params });
+            return await this.query(queryStr, params);
         } catch (error) {
             throw new DatabaseError(`Find vertices failed: ${error.message}`);
         }
@@ -361,6 +359,9 @@ class OrientDBAdapter extends BaseAdapter {
      * @param {Object} params - Query parameters
      */
     async query(query, params = {}) {
+        console.log('SQL Query:', query);
+        console.log('Params:', params);
+
         try {
             const results = await this.db.query(query, { params }).all();
             return results;
@@ -547,7 +548,6 @@ class OrientDBAdapter extends BaseAdapter {
         let paramCounter = 0;
 
         for (const [key, value] of Object.entries(query)) {
-            console.log(`Key: ${key}`, `Value: ${JSON.stringify(value)}`);
             if (typeof value === 'object' && value !== null) {
                 for (const [operator, operand] of Object.entries(value)) {
                     const { condition, parameter } = this._buildOperatorCondition(
