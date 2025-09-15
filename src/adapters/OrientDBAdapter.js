@@ -229,7 +229,7 @@ class OrientDBAdapter extends BaseAdapter {
                 queryStr += ` SKIP ${skip}`;
             }
 
-            console.log('Executing query:', queryStr, params);
+            console.log('Executing query:', queryStr, 'Params:', params);
 
             return await this.query(queryStr, { params });
         } catch (error) {
@@ -547,6 +547,7 @@ class OrientDBAdapter extends BaseAdapter {
         let paramCounter = 0;
 
         for (const [key, value] of Object.entries(query)) {
+            console.log(`Key: ${key}`, `Value: ${value}`);
             if (typeof value === 'object' && value !== null) {
                 for (const [operator, operand] of Object.entries(value)) {
                     const { condition, parameter } = this._buildOperatorCondition(
