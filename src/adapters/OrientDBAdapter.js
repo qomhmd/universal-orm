@@ -583,72 +583,72 @@ class OrientDBAdapter extends BaseAdapter {
         switch (operator) {
             case '$eq':
                 return {
-                    condition: `${field} =`,
+                    condition: `${field} = :${paramName}`,
                     parameter: value
                 };
             case '$ne':
                 return {
-                    condition: `${field} <>`,
+                    condition: `${field} <> :${paramName}`,
                     parameter: value
                 };
             case '$gt':
                 return {
-                    condition: `${field} >`,
+                    condition: `${field} > :${paramName}`,
                     parameter: value
                 };
             case '$gte':
                 return {
-                    condition: `${field} >=`,
+                    condition: `${field} >= :${paramName}`,
                     parameter: value
                 };
             case '$lt':
                 return {
-                    condition: `${field} <`,
+                    condition: `${field} < :${paramName}`,
                     parameter: value
                 };
             case '$lte':
                 return {
-                    condition: `${field} <=`,
+                    condition: `${field} <= :${paramName}`,
                     parameter: value
                 };
             case '$in':
                 return {
-                    condition: `${field} IN`,
+                    condition: `${field} IN :${paramName}`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$nin':
                 return {
-                    condition: `${field} NOT IN`,
+                    condition: `${field} NOT IN :${paramName}`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$contains':
                 return {
-                    condition: `${field} CONTAINS`,
+                    condition: `${field} CONTAINS :${paramName}`,
                     parameter: value
                 };
             case '$containsAll':
                 return {
-                    condition: `${field} CONTAINSALL`,
+                    condition: `${field} CONTAINSALL :${paramName}`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$containsText':
                 return {
-                    condition: `${field} CONTAINSTEXT`,
+                    condition: `${field} CONTAINSTEXT :${paramName}`,
                     parameter: value
                 };
             case '$between':
                 return {
-                    condition: `${field} BETWEEN`,
-                    parameter: `${value[0]} AND ${value[1]}`
+                    condition: `${field} BETWEEN :${paramName}_start AND :${paramName}_end`,
+                    parameter: { [`${paramName}_start`]: value[0], [`${paramName}_end`]: value[1] }
                 };
             case '$matches':
                 return {
-                    condition: `${field} MATCHES`,
+                    condition: `${field} MATCHES :${paramName}`,
                     parameter: value
                 };
             case '$like':
                 return {
-                    condition: `${field} LIKE`,
+                    condition: `${field} LIKE :${paramName}`,
                     parameter: value
                 };
             default:
