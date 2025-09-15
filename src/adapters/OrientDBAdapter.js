@@ -547,7 +547,7 @@ class OrientDBAdapter extends BaseAdapter {
         let paramCounter = 0;
 
         for (const [key, value] of Object.entries(query)) {
-            console.log(`Key: ${key}`, `Value: ${value}`);
+            console.log(`Key: ${key}`, `Value: ${JSON.stringify(value)}`);
             if (typeof value === 'object' && value !== null) {
                 for (const [operator, operand] of Object.entries(value)) {
                     const { condition, parameter } = this._buildOperatorCondition(
