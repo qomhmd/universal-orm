@@ -252,7 +252,7 @@ class OrientDBAdapter extends BaseAdapter {
                 skip
             } = options;
 
-            let queryStr = `SELECT ${select || '*'} FROM ${className}`;
+            let queryStr = `SELECT ${select || ''} FROM ${className}`;
             const params = {};
 
             if (Object.keys(query).length > 0) {
@@ -583,72 +583,72 @@ class OrientDBAdapter extends BaseAdapter {
         switch (operator) {
             case '$eq':
                 return {
-                    condition: `${field} = :${paramName}`,
+                    condition: `${field} =`,
                     parameter: value
                 };
             case '$ne':
                 return {
-                    condition: `${field} <> :${paramName}`,
+                    condition: `${field} <>`,
                     parameter: value
                 };
             case '$gt':
                 return {
-                    condition: `${field} > :${paramName}`,
+                    condition: `${field} >`,
                     parameter: value
                 };
             case '$gte':
                 return {
-                    condition: `${field} >= :${paramName}`,
+                    condition: `${field} >=`,
                     parameter: value
                 };
             case '$lt':
                 return {
-                    condition: `${field} < :${paramName}`,
+                    condition: `${field} <`,
                     parameter: value
                 };
             case '$lte':
                 return {
-                    condition: `${field} <= :${paramName}`,
+                    condition: `${field} <=`,
                     parameter: value
                 };
             case '$in':
                 return {
-                    condition: `${field} IN :${paramName}`,
+                    condition: `${field} IN`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$nin':
                 return {
-                    condition: `${field} NOT IN :${paramName}`,
+                    condition: `${field} NOT IN`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$contains':
                 return {
-                    condition: `${field} CONTAINS :${paramName}`,
+                    condition: `${field} CONTAINS`,
                     parameter: value
                 };
             case '$containsAll':
                 return {
-                    condition: `${field} CONTAINSALL :${paramName}`,
+                    condition: `${field} CONTAINSALL`,
                     parameter: Array.isArray(value) ? value : [value]
                 };
             case '$containsText':
                 return {
-                    condition: `${field} CONTAINSTEXT :${paramName}`,
+                    condition: `${field} CONTAINSTEXT`,
                     parameter: value
                 };
             case '$between':
                 return {
-                    condition: `${field} BETWEEN :${paramName}_start AND :${paramName}_end`,
-                    parameter: { [`${paramName}_start`]: value[0], [`${paramName}_end`]: value[1] }
+                    condition: `${field} BETWEEN`,
+                    parameter: `${value[0]} AND ${value[1]}`
                 };
             case '$matches':
                 return {
-                    condition: `${field} MATCHES :${paramName}`,
+                    condition: `${field} MATCHES`,
                     parameter: value
                 };
             case '$like':
                 return {
-                    condition: `${field} LIKE :${paramName}`,
+                    condition: `${field} LIKE`,
                     parameter: value
                 };
             default:
